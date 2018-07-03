@@ -1,0 +1,17 @@
+#ifndef CONFIG_HPP_INCLUDED_776593856701930368
+#define CONFIG_HPP_INCLUDED_776593856701930368 1
+
+namespace StaticData {
+  namespace Config {
+
+        
+    constexpr int major = ${STATIC_DATA_MAJOR};
+    constexpr int minor = ${STATIC_DATA_MINOR};
+    constexpr int update = ${STATIC_DATA_UPDATE};
+    constexpr char version [] = "${STATIC_DATA_VERSION}";
+    constexpr char version_update [] = "${STATIC_DATA_VERSION_UPDATE}";
+    
+  } // end of namespace Config
+} // end of namespace StaticData
+
+#endif // !defined CONFIG_HPP_INCLUDED_776593856701930368
