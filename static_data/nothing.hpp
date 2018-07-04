@@ -90,7 +90,7 @@ namespace StaticData {
        * produces an instance of Nothing
        */
       template< typename F >
-      constexpr auto
+      friend constexpr auto
       map( F&&, const Nothing& ){
 	return Nothing{};
       }

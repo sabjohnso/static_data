@@ -4,6 +4,7 @@
 //
 // ... Static Data header files
 //
+#include <static_data/import.hpp>
 #include <static_data/nothing.hpp>
 
 
@@ -20,10 +21,23 @@ namespace StaticData
      * terminated by an instance of Nothing
      */
     template< typename Head, typename Tail >
-    class cell : pair<Head,Tail> {
+    class cell : pair<Head,Tail> { 
     public:
+      
       using head_type = Head;
       using tail_type = Tail;
+
+
+      static_assert( 
+	is_same<decay_t<Head>,Head>::value,
+	"\nExpected Head to be free of any const or "
+	"\nreference modifications. ");
+
+      static_assert( 
+	is_same<decay_t<Tail>,Tail>::value,
+	"\nExpected Head to be free of any const or "
+	"\nreference modifications. ");
+      
 
       using base = pair<head_type,tail_type>;
 
@@ -205,7 +219,7 @@ namespace StaticData
       static constexpr size_t
       length_aux( const Ts& xs, size_t accum ){
 	return has_data( xs )
-	  ? length_aux( tail( forward<Ts>( xs )), accum+1 )
+	  ? length_aux( tail( xs ), accum+1 )
 	  : accum;
       }
 

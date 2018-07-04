@@ -4,3 +4,6 @@ macro( static_data_add_test  name )
 endmacro( static_data_add_test  name )
 
 static_data_add_test( nothing )
+static_data_add_test( list )
+static_data_add_test( zipper )
+static_data_add_test( stack )
